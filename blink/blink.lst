@@ -2249,7 +2249,7 @@ Disassembly of section .text:
 
 00001bec <.LSM5>:
     1bec:	02 00 20    	mov.w     #0x0, w2
-    1bee:	03 f0 23    	mov.w     #0x3f00, w3
+    1bee:	03 f8 23    	mov.w     #0x3f80, w3
     1bf0:	60 81 20    	mov.w     #0x816, w0
     1bf2:	75 fd 07    	rcall     0x16de <_timer_setPeriod>
 

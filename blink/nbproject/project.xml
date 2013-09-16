@@ -2,8 +2,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>BlinkProject</name>
-            <creation-uuid>9a7e8533-be7f-49ee-a861-030fa1be42db</creation-uuid>
+            <name>blink</name>
+            <creation-uuid>475f5380-4392-44dc-814d-8b67b92975f0</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions/>
             <cpp-extensions/>
