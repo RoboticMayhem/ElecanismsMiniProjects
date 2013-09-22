@@ -46,6 +46,7 @@ int16_t main(void) {
     uint8_t string[40];
     uint8_t compare[40];
 
+
     // MAIN LOOP ///////////////////////////////////////////////////
     while (1) {
 
@@ -63,37 +64,37 @@ int16_t main(void) {
         //pot = pin_read(&A[0]);
         //pos = pot;
 
-        printf("we're sending the Horizontal servo %u \n",posHoriz);
-        printf("we're sending the Vertical   servo %u \n",posVert);
+        //printf("we're sending the Horizontal servo %u \n",posHoriz);
+        //printf("we're sending the Vertical   servo %u \n",posVert);
         pin_write(&D[2],posHoriz);
         pin_write(&D[3],posVert);
 
         // communication ///////////////////////////////////////////
     // This funciton expects the loop to stop here
         printf(">> ");
-        uart_gets(&uart1, string, 40);
+        uart_getce(&uart1, string, 40);
         printf("'%s'\n", string);
 
         if (strcmp(string, "w") == 0){
             printf("W - Up \n");
-            posVert = posVert + 1;
+            posVert = posVert + 10;
         }
         else if (strcmp(string, "s") == 0){
             printf("S - Down \n");
-            posVert = posVert - 1;
+            posVert = posVert - 10;
         }
         else if (strcmp(string, "a") == 0){
             printf("A - Left \n");
-            posHoriz = posHoriz + 1;
+            posHoriz = posHoriz + 10;
         }
         else if (strcmp(string, "d") == 0){
             printf("D - Right \n");
-            posHoriz = posHoriz - 1;
+            posHoriz = posHoriz - 10;
         }
         else if (strcmp(string, "r") == 0){
             printf("R - Reset \n");
-            posHoriz = 0;
-            posVert = 0;
+            posHoriz = 32768;
+            posVert = 32768;
         }
         else{
             printf("NA \n");
