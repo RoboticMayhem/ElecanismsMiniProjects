@@ -10,6 +10,8 @@ class App(object):
         self.left = False
         self.up = False
         self.down = False
+        self.enter = False
+        self.r = False
 
     def keyPressed(self,event):
         #print "HERE"
@@ -28,6 +30,12 @@ class App(object):
         elif event.keysym == 'Down':
             self.down = True
             print("Press")
+        elif event.keysym == 'Enter':
+            self.enter = True
+            print("Press")
+        elif event.keysym == 'r':
+            self.r = True
+            print("Press")
 
     def keyReleased(self,event):
         if event.keysym == 'Right':
@@ -42,28 +50,29 @@ class App(object):
         elif event.keysym == 'Down':
             self.down = False
             print("Release")
+        elif event.keysym == 'Enter':
+            self.enter = False
+            print("Release")
+        elif event.keysym == 'r':
+            self.r = False
+            print("Release")
 
     def task(self):
         if self.right:
-            ser.write("d")
-            print("Output = ")
-            print(ser.read()) 
-            print("Right")
+            ser.write("d\r\n")
+            print("Output = Right")
         elif self.left:
-            ser.write("a")
-            print("Output = ")
-            print(ser.read())
-            print("Left")
+            ser.write("a\r\n")
+            print("Output = Left")
         elif self.up:
-            ser.write("w")
-            print("Output = ")
-            print(ser.read())
-            print("Up")
+            ser.write("w\r\n")
+            print("Output = Up")
         elif self.down:
-            ser.write("s")
-            print("Output = ")
-            print(ser.read())
-            print("Down")
+            ser.write("s\r\n")
+            print("Output = Down")
+        elif self.r:
+            ser.write("r\r\n")
+            print("Reset")
         root.after(20,self.task)
 
 application = App()

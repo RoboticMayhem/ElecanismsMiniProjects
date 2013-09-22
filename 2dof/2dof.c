@@ -72,29 +72,55 @@ int16_t main(void) {
         // communication ///////////////////////////////////////////
     // This funciton expects the loop to stop here
         printf(">> ");
-        uart_getce(&uart1, string, 40);
+        uart_gets(&uart1, string, 40);
         printf("'%s'\n", string);
 
         if (strcmp(string, "w") == 0){
             printf("W - Up \n");
-            posVert = posVert + 10;
+            if(posVert > 65279){
+                posVert = 65535;
+            }
+            else{
+                posVert = posVert + 256;
+            }
         }
+
         else if (strcmp(string, "s") == 0){
             printf("S - Down \n");
-            posVert = posVert - 10;
+            if(posVert < 256){
+                posVert = 0;
+            }
+            else{
+                posVert = posVert - 256;
+            }
         }
+
         else if (strcmp(string, "a") == 0){
             printf("A - Left \n");
-            posHoriz = posHoriz + 10;
+            if(posHoriz > 65279){
+                posHoriz = 65535;
+            }
+            else{
+                posHoriz = posHoriz + 256;
+            }
+
         }
+
         else if (strcmp(string, "d") == 0){
             printf("D - Right \n");
-            posHoriz = posHoriz - 10;
+            if(posHoriz < 256){
+                posHoriz = 0;
+            }
+            else{
+                posHoriz = posHoriz - 256;
+            }
+
         }
+
         else if (strcmp(string, "r") == 0){
             printf("R - Reset \n");
-            posHoriz = 32768;
-            posVert = 32768;
+            posHoriz = 32767;
+            posVert = 32767;
         }
         else{
             printf("NA \n");
