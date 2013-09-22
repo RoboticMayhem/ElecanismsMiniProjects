@@ -13,6 +13,7 @@ class App(object):
         self.enter = False
         self.r = False
 
+
     def keyPressed(self,event):
         #print "HERE"
         if event.keysym == 'Escape':
@@ -36,6 +37,7 @@ class App(object):
         elif event.keysym == 'r':
             self.r = True
             print("Press")
+
 
     def keyReleased(self,event):
         if event.keysym == 'Right':
@@ -73,6 +75,7 @@ class App(object):
         elif self.r:
             ser.write("r\r\n")
             print("Reset")
+
         root.after(20,self.task)
 
 application = App()
