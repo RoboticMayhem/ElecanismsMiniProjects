@@ -27,8 +27,8 @@ int16_t main(void) {
     init_oc();
     init_uart();
 
-    oc_servo(&oc1, &D[2], &timer1, 20e-3, 0.6e-3, 2.55e-3, 0);
-    oc_servo(&oc2, &D[3], &timer1, 20e-3, 0.6e-3, 2.55e-3, 0);
+    oc_servo(&oc1, &D[2], &timer1, 20e-3, 0.6e-3, 2.55e-3, posHoriz);
+    oc_servo(&oc2, &D[3], &timer1, 20e-3, 0.6e-3, 2.55e-3, posVert);
 
     // Servo ///////////////////////////////////////////////////
     for (posHoriz <= 65535) {
