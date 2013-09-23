@@ -12,52 +12,41 @@ class App(object):
         self.down = False
         self.enter = False
         self.r = False
-
+        self.t = False
 
     def keyPressed(self,event):
-        #print "HERE"
         if event.keysym == 'Escape':
             root.destroy()
-            print("Press")
         elif event.keysym == 'Right':
             self.right = True
-            print("Press")
         elif event.keysym == 'Left':
             self.left = True
-            print("Press")
         elif event.keysym == 'Up':
             self.up = True
-            print("Press")
         elif event.keysym == 'Down':
             self.down = True
-            print("Press")
         elif event.keysym == 'Enter':
             self.enter = True
-            print("Press")
         elif event.keysym == 'r':
             self.r = True
-            print("Press")
-
+        elif event.keysym == 't':
+            self.t = True
 
     def keyReleased(self,event):
         if event.keysym == 'Right':
             self.right = False
-            print("Release")
         elif event.keysym == 'Left':
             self.left = False
-            print("Release")
         elif event.keysym == 'Up':
             self.up = False
-            print("Release")
         elif event.keysym == 'Down':
             self.down = False
-            print("Release")
         elif event.keysym == 'Enter':
             self.enter = False
-            print("Release")
         elif event.keysym == 'r':
             self.r = False
-            print("Release")
+        elif event.keysym == 't':
+            self.t = False
 
     def task(self):
         if self.right:
@@ -75,6 +64,9 @@ class App(object):
         elif self.r:
             ser.write("r\r\n")
             print("Reset")
+        elif self.t:
+            ser.write("t\r\n")
+            print("Trigger Ultrasonic Burst")
 
         root.after(20,self.task)
 
