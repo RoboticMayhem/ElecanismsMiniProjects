@@ -25,7 +25,7 @@ class project3:
     def set_vals(self, val1, val2):
         try:
             self.dev.ctrl_transfer(0x40, self.SET_VALS, x.get(), y.get())
-            root.after(100,set_vals)
+            root.after(100,self.SET_VALS)
         except usb.core.USBError:
             print "Could not send SET_VALS vendor request."
 
@@ -50,5 +50,5 @@ x = Scale(root, from_=0, to=65535, orient=HORIZONTAL)
 x.pack(anchor=CENTER)
 #Button(master, text='Show', command=show_values).pack()
 
-root.after(100,set_vals)
+root.after(100, self.SET_VALS)
 root.mainloop()

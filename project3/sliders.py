@@ -1,13 +1,10 @@
 from Tkinter import *
-import serial
 import project3
 
-ser = serial.Serial('/dev/ttyUSB0',19200)
-print("Communication established")
+p = project3.project3()
 
 def show_values():
-    print (x.get(), y.get())
-    ser.write(FILL_THIS_IN)
+    p.set_vals(x.get(), y.get())
     root.after(100,show_values)
 
 root = Tk()
