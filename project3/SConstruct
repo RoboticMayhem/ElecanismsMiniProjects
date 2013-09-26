@@ -21,6 +21,7 @@ env.Program('project3', ['project3.c',
                          '../lib/pin.c',
                          '../lib/timer.c',
                          '../lib/oc.c', 
-                         '../lib/uart.c'])
+                         '../lib/uart.c'
+                         '../lib/ocpwm.c'])
 env.Hex('project3')
 env.List('project3')

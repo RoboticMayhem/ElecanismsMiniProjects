@@ -8,6 +8,7 @@ class project3:
         self.SET_VALS = 1
         self.GET_VALS = 2
         self.PRINT_VALS = 3
+        self.TRANSMIT = 4
         self.dev = usb.core.find(idVendor = 0x6666, idProduct = 0x0003)
         if self.dev is None:
             raise ValueError('no USB device found matching idVendor = 0x6666 and idProduct = 0x0003')
@@ -42,3 +43,10 @@ class project3:
         except usb.core.USBError:
             print "Could not send PRINT_VALS vendor request."
 
+    def get_dist(self):
+        try:
+            ret = self.dev.ctrl_transfer(0xC0, self.GET_DIST, 0, 0, 2)
+        except usb.core.USBError:
+            print "Could not send GET_DIST vendor request."
+        else:
+            return int(ret[0])+int(ret[1])*256
